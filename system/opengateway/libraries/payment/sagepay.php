@@ -6,7 +6,7 @@ class sagepay
 {
 	var $settings;
 
-	private $debug = true;
+	private $debug = false;
 
 	private $ci;
 
@@ -672,7 +672,7 @@ class sagepay
 				$this->ci->charge_data_model->Save($charge['id'], 'token', $params['Token']);
 			}
 
-			$coupon_id = isset($charge['coupon']) ? $charge['coupon']['coupon_id'] : null;
+			$coupon_id = (isset($charge['coupon']) and isset($charge['coupon']['coupon_id'])) ? $charge['coupon']['coupon_id'] : null;
 
 			if (!empty($coupon_id)) {
 				// track coupon
@@ -845,6 +845,8 @@ class sagepay
 	*/
 	public function log_it($heading, $params)
 	{
+		$content = '';
+
 		$file = FCPATH .'writeable/gateway_log.txt';
 
 		$content .= "# $heading\n";
