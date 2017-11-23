@@ -14,7 +14,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://platform.opengateway.net/";
+$config['base_url']	= "http://everpay-dashboard.herokuapp.com/";
 
 /*
 |--------------------------------------------------------------------------
